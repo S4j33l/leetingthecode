@@ -78,18 +78,6 @@ public:
         }
         return true;
     }
-    void reverseList()
-    {
-        Node *curr = head;
-        Node *prev = NULL;
-        while (head != NULL)
-        {
-            curr = head->next;
-            head->next = prev;
-            prev = head;
-            head = curr;
-        }
-    }
 };
 int main()
 {
@@ -102,7 +90,6 @@ int main()
     LL.addNode(2);
     LL.addNode(1);
     LL.showList();
-    // std::cout << LL.isListPalindromic();
-    LL.reverseList();
+    std::cout << LL.isListPalindromic();
     LL.showList();
 }
