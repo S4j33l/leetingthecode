@@ -12,8 +12,10 @@ public:
 };
 class LinkedList
 {
-public:
+private:
     Node *head;
+
+public:
     LinkedList()
     {
         head = NULL;
@@ -44,6 +46,25 @@ public:
             traverser = traverser->next;
         }
     }
+    void removeNthFromEnd(int n)
+    {
+        Node *dummyNode = new Node(0);
+        dummyNode->next = head;
+        Node *slow = dummyNode;
+        Node *fast = dummyNode;
+        int i = 0;
+        while (i <= n)
+        {
+            fast = fast->next;
+            i++;
+        }
+        while (fast != NULL)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        slow->next = slow->next->next;
+    }
 };
 int main()
 {
@@ -52,8 +73,6 @@ int main()
     LL.addNode(2);
     LL.addNode(3);
     LL.addNode(4);
-    LL.addNode(3);
-    LL.addNode(2);
-    LL.addNode(1);
+    LL.removeNthFromEnd(3);
     LL.showList();
 };

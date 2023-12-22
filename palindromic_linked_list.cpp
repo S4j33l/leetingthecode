@@ -51,8 +51,6 @@ public:
         Node *slow = head;
         Node *fast = head;
         Node *mid;
-        Node *prev = NULL;
-        Node *curr = NULL;
         while (fast != NULL && fast->next != NULL)
         {
             mid = slow;
@@ -60,6 +58,8 @@ public:
             fast = fast->next->next;
         }
         mid->next = NULL;
+        Node *prev = NULL;
+        Node *curr = NULL;
         while (slow != NULL)
         {
             curr = slow->next;
@@ -80,25 +80,6 @@ public:
         }
         return true;
     }
-    void removeNthFromEnd(int n)
-    {
-        Node *dummyNode = new Node(0);
-        dummyNode->next = head;
-        Node *slow = dummyNode;
-        Node *fast = dummyNode;
-        int i = 0;
-        while (i <= n)
-        {
-            fast = fast->next;
-            i++;
-        }
-        while (fast != NULL)
-        {
-            fast = fast->next;
-            slow = slow->next;
-        }
-        slow->next = slow->next->next;
-    }
 };
 int main()
 {
@@ -107,8 +88,8 @@ int main()
     LL.addNode(2);
     LL.addNode(3);
     LL.addNode(4);
+    LL.addNode(5);
+    LL.addNode(6);
     LL.showList();
-    std::cout << LL.isListPalindromic();
-    LL.removeNthFromEnd(2);
-    LL.showList();
+    std::cout << LL.isListPalindromic() << std::endl;
 }
