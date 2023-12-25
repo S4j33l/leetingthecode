@@ -46,24 +46,9 @@ public:
             traverser = traverser->next;
         }
     }
-    void removeNthFromEnd(int n)
+    void deleteNode(Node *node)
     {
-        Node *dummyNode = new Node(0);
-        dummyNode->next = head;
-        Node *slow = dummyNode;
-        Node *fast = dummyNode;
-        int i = 0;
-        while (i <= n)
-        {
-            fast = fast->next;
-            i++;
-        }
-        while (fast != NULL)
-        {
-            fast = fast->next;
-            slow = slow->next;
-        }
-        slow->next = slow->next->next;
+        *node = *node->next;
     }
 };
 int main()
@@ -73,6 +58,6 @@ int main()
     LL->addNode(2);
     LL->addNode(3);
     LL->addNode(4);
-    LL->removeNthFromEnd(3);
+    LL->addNode(5);
     LL->showList();
-};
+}

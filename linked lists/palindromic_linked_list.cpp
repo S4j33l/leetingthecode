@@ -83,13 +83,13 @@ public:
 };
 int main()
 {
-    LinkedList LL;
-    LL.addNode(1);
-    LL.addNode(2);
-    LL.addNode(3);
-    LL.addNode(4);
-    LL.addNode(5);
-    LL.addNode(6);
-    LL.showList();
-    std::cout << LL.isListPalindromic() << std::endl;
+    LinkedList *LL = new LinkedList();
+    LL->addNode(1);
+    LL->addNode(2);
+    LL->addNode(3);
+    LL->addNode(4);
+    LL->addNode(5);
+    LL->addNode(6);
+    LL->showList();
+    std::cout << LL->isListPalindromic() << std::endl;
 }

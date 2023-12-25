@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 class Node
 {
 public:
@@ -46,24 +47,15 @@ public:
             traverser = traverser->next;
         }
     }
-    void removeNthFromEnd(int n)
+    void doubleIt()
     {
-        Node *dummyNode = new Node(0);
-        dummyNode->next = head;
-        Node *slow = dummyNode;
-        Node *fast = dummyNode;
-        int i = 0;
-        while (i <= n)
+        std::string doubled = "";
+        Node *traverser = head;
+        while (traverser != NULL)
         {
-            fast = fast->next;
-            i++;
+            doubled += std::to_string(traverser->data);
+            traverser = traverser->next;
         }
-        while (fast != NULL)
-        {
-            fast = fast->next;
-            slow = slow->next;
-        }
-        slow->next = slow->next->next;
     }
 };
 int main()
@@ -73,6 +65,7 @@ int main()
     LL->addNode(2);
     LL->addNode(3);
     LL->addNode(4);
-    LL->removeNthFromEnd(3);
+    LL->addNode(5);
     LL->showList();
-};
+    LL->doubleIt();
+}

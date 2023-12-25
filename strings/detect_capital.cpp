@@ -2,19 +2,37 @@
 bool detectCapitalUse(std::string word)
 {
     bool isCapitalUseCorrect = false;
-    for (int i = 0; i <= word.length(); i++)
+    bool frontLetterCapital = word.front() >= 'A' && word.front() <= 'Z';
+    for (int i = 1; i < word.length(); i++)
     {
-        if (word[i] >= 'a' && word[i] <= 'z')
+        if (frontLetterCapital)
         {
-            isCapitalUseCorrect = true;
+            if (word[i] >= 'a' && word[i] <= 'z')
+            {
+                isCapitalUseCorrect = true;
+            }
+            else if (word[i] >= 'A' && word[i] <= 'Z')
+            {
+                isCapitalUseCorrect = true;
+                if (word[i + 1] >= 'a' && word[i + 1] <= 'z')
+                {
+                    isCapitalUseCorrect = false;
+                }
+            }
         }
-        else if (word[0] >= 'A' && word[0] <= 'Z')
+        else
         {
-            isCapitalUseCorrect = true;
-        }
-        else if (word[i] >= 'A' && word[i] <= 'Z')
-        {
-            isCapitalUseCorrect = false;
+            if (word[i] >= 'a' && word[i] <= 'z')
+            {
+                if (word[i + 1] >= 'A' && word[i + 1] <= 'Z')
+                {
+                    isCapitalUseCorrect = false;
+                }
+                else
+                {
+                    isCapitalUseCorrect = true;
+                }
+            }
         }
     }
     return isCapitalUseCorrect;
